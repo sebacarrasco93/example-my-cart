@@ -2,7 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/add', function() {
+Route::get('/', function () {
+    return [
+        '/add' => 'Add the 2 items to a Cart',
+        '/get' => 'Get the items',
+        '/count' => 'Get the count of the items in the cart (on this case 2)',
+        '/total' => 'Get the total items (on this case 18.94)',
+    ];
+});
+
+Route::get('add', function() {
     $itemOne = [
         'uuid' => '111AAA',
         'name' => "Lemon Waffle by SoloWaffles",
@@ -21,6 +30,11 @@ Route::get('/add', function() {
 
 Route::get('get', function() {
     return MyCart::get();
+});
+
+
+Route::get('count', function() {
+    return MyCart::count();
 });
 
 Route::get('total', function() {
