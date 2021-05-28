@@ -14,6 +14,7 @@ class ExampleController extends Controller
             '/get' => 'Get the items',
             '/count' => 'Get the count of the items in the cart (on this case should return 2)',
             '/total' => 'Get the total items (on this case should return 18.94)',
+            '/findByUuid/{uuid}' => 'Get the first item based on their UUID key',
         ];
     }
 
@@ -37,12 +38,15 @@ class ExampleController extends Controller
         return MyCart::get();
     }
 
-
     public function count() {
         return MyCart::count();
     }
 
     public function total() {
         return MyCart::total();
+    }
+
+    public function findByUuid($uuid) {
+        return MyCart::findByUuid($uuid);
     }
 }

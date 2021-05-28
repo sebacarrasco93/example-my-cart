@@ -10,3 +10,4 @@ Route::get('add', [ExampleController::class, 'add']);
 Route::get('get', [ExampleController::class, 'get']);
 Route::get('count', [ExampleController::class, 'count']);
 Route::get('total', [ExampleController::class, 'total']);
+Route::get('findByUuid/{uuid}', [ExampleController::class, 'findByUuid']);
