@@ -15,6 +15,9 @@ class ExampleController extends Controller
             '/count' => 'Get the count of the items in the cart (on this case should return 2)',
             '/total' => 'Get the total items (on this case should return 18.94)',
             '/findByUuid/{uuid}' => 'Get the first item based on their UUID key',
+            
+            '/findByUuid/{uuid}/delete' => 'Removes the first item based on their UUID key',
+            '/findByUuid/{uuid}/update' => 'Updates the first item based on their UUID key',
         ];
     }
 
@@ -31,7 +34,7 @@ class ExampleController extends Controller
         ];
 
         MyCart::add($itemOne);
-        MyCart::add($itemTwo);
+        MyCart::add($itemTwo); // Or you can pass two
     }
 
     public function get() {
@@ -48,5 +51,21 @@ class ExampleController extends Controller
 
     public function findByUuid($uuid) {
         return MyCart::findByUuid($uuid);
+    }
+
+    public function deleteByUuid($uuid)
+    {
+        return MyCart::delete($uuid);
+    }
+
+    public function updateByUuid($uuid)
+    {
+        $itemOne = [
+            'uuid' => '111AAA',
+            'name' => "Another good Waffle by SoloWaffles",
+            'total' => '19.99'
+        ];
+
+        return MyCart::update($uuid, $itemOne);
     }
 }
